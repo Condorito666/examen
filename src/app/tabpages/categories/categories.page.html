@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="tabs/tab1"
+        icon="arrow-back"
+        text=""
+        color="primary"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Grocery</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <div class="button-bar">
+      <ion-button
+        (click)="selectBtn(i)"
+        size="small"
+        *ngFor="let btn of buttons; let i = index;"
+        [color]="btn .selected ? 'primary' : 'medium'"
+        [fill]="btn.selected ? 'solid': 'outline'"
+        >{{btn.name}}
+        <ion-icon *ngIf="!btn.count" slot="end" name="chevron-down"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div
+    class="featured-slide"
+    *ngFor="let f of offers"
+    routerLink="/tabs/tab1/details"
+  >
+    <img [src]="f.img" />
+    <div class="info">
+      <ion-text color="dark"><b>{{f.name }}</b></ion-text>
+      <div>
+        <span *ngFor="let tag of f.tags; let isLast = last;">
+          {{ tag }} {{ !isLast ? ' · ' : '' }}
+        </span>
+      </div>
+      <span>
+        <ion-icon name="star" color="secondary"></ion-icon>
+        <ion-text color="secondary"> {{ f.rating }} </ion-text>{{ f.ratings }}
+      </span>
+      <span>
+        <ion-icon name="location-outline"></ion-icon> {{ f.distance }}
+      </span>
+    </div>
+  </div>
+</ion-content>

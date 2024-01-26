@@ -8,6 +8,35 @@
  * For more information on global stylesheets, visit the documentation:
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
+ion-popover {
+  --backdrop-opacity: 0.03;
+  --offset-x: -50px;
+  &::part(arrow) {
+    display: none;
+  }
+}
+.dark-backdrop {
+  --backdrop-opacity: 1;
+}
+
+@import "swiper/css/bundle";
+
+@font-face {
+  font-family: "Plex";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/assets/fonts/IBMPlexSans-Regular.ttf");
+}
+@font-face {
+  font-family: "Plex";
+  font-weight: bold;
+  src: url("/assets/fonts/IBMPlexSans-Bold.ttf");
+}
+@import "swiper/css/bundle";
+:root {
+  --ion-text-color: #828585;
+  --ion-font-family: "Plex";
+}
 
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";

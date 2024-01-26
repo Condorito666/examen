@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="home"
+        icon="arrow-back"
+        color="primary"
+        text=""
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>All Offers</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openFilters()" color="primary">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-segment scrollable [value]="'All offers'">
+    <ion-segment-button *ngFor="let seg of segments" [value]="seg">
+      {{seg}}
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="=featured-slide" *ngFor="let f of offers" routerLink="tab1/details">
+    <img [src]="f.img" />
+    <div class="info">
+      <ion-text color="dark"><b>{{f.name}}</b> </ion-text>
+      <div>
+        <span *ngFor="let tag of f.tags; let isLast = last; ">
+          {{tag}} {{ !isLast ? ' · ' : '' }}
+        </span>
+      </div>
+      <span><ion-icon color="secondary" name="star">
+         </ion-icon>
+         <ion-text color="secondary">
+          {{f.rating}}
+         </ion-text>{{f.ratings}}
+        </span>
+        <span>
+        <ion-icon name="location-outline"></ion-icon>{{f.distance}}
+      </span>
+    </div>
+  </div>
+</ion-content>

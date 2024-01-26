@@ -1,0 +1,18 @@
+ion-header {
+  box-shadow: 0px 7px 13px -9px rgb (0 0 0 / 10%);
+}
+
+ion-content {
+  --background: #f9f9fa;
+}
+
+ion-item {
+  --color: #000 !important;
+  --detail-icon-color: var(--ion-color-primary);
+  --detail-icon-opacity: 1;
+}
+
+ion-list {
+  margin: 20px 0px 20px 0px;
+  border: 1px 0px 1px 0px solid #c8c7cc;
+}

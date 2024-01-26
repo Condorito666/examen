@@ -1,0 +1,30 @@
+ion-header {
+  box-shadow: 0px 7px 13px -9px rgb(0 0 0 / 10%);
+}
+ion-toolbar {
+  --background: #fff;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.featured-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  img {
+    border-radius: 4px;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.button-bar {
+  display: flex;
+  overflow-x: scroll;
+  margin-top: 10px;
+  
+}

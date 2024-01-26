@@ -15,9 +15,8 @@ export const AutoLoginGuard = () => {
       if (isAuthenticated) {
         router.navigateByUrl('/tabs', { replaceUrl: true });
         console.log('Found previous token, automatic login');
-        return true;
+        return false;
       } else {
-        
         return true;
       }
     })

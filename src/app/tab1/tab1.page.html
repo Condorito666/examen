@@ -1,9 +1,143 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title> Tab 1 </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content scrollEvents="true" [appFadeHeader]="overlay">
+  <!-- topBar -->
+  <div class="top-bar">
+    <!-- overlay para animacion -->
+    <div class="top-overlay" #overlay></div>
+    <ion-row class="info-row">
+      <!--  ubicacion y botton de cuenta -->
+      <ion-col size="10" tappable (click)="openSettings()">
+        <ion-text color="light">
+          <span>Now</span><br />
+          <span class="dropdown">
+            <b>Selected Location</b>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-text>
+      </ion-col>
+      <ion-col size="2" tappable routerLink="account">
+        <div class="account-btn">
+          <ion-icon color="primary" name="person-outline"></ion-icon>
+        </div>
+      </ion-col>
 
-<ion-content>
-  <ion-button expand="full" (click)="logout()">Logout</ion-button>
+      <!-- columna con botones tipo segmento -->
+      <ion-col size="12" class="ion-text-left" class="category-select">
+        <ion-button
+          (click)="changeCategory(0)"
+          shape="round"
+          size="small"
+          [class.selected]="activeCat== 0"
+        >
+          delivery
+        </ion-button>
+        <ion-button
+          (click)="changeCategory(1)"
+          shape="round"
+          size="small"
+          [class.selected]="activeCat== 1"
+        >
+          Pickup
+        </ion-button>
+        <ion-button
+          (click)="changeCategory(2)"
+          shape="round"
+          size="small"
+          [class.selected]="activeCat== 2"
+        >
+          Table Service
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!-- searchBar -->
+  <ion-item lines="none" class="input">
+    <ion-input placeholder="Dishes, restaurants or cuisines">
+      <ion-icon slot="start" name="search" color="primary"></ion-icon>
+    </ion-input>
+    <ion-icon
+      name="options"
+      slot="end"
+      color="primary"
+      style="z-index: 2"
+      tappable
+      (click)="openFilters()"
+    >
+    </ion-icon>
+  </ion-item>
+
+  <div class="spacing"></div>
+  <!-- skeleton text -->
+
+  <div class="content">
+    <div *ngIf="featured.length == 0" [@fadeAnimation]>
+      <div *ngFor="let i of [].constructor(6)" class="skeleton">
+        <img src="../../assets/data/placeholder.svg" alt="" />
+        <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 75%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+      </div>
+    </div>
+    <!-- content -->
+    <div *ngIf="featured.length > 0 " [@fadeAnimation]>
+      <swiper-container
+        slides-per-view="3.5"
+        space-between="8"
+        free-mode="true"
+      >
+        <swiper-slide *ngFor="let cat of categories">
+          <div routerLink="categories">
+            <img [src]="cat.img" alt="" />
+          </div>
+        </swiper-slide>
+      </swiper-container>
+
+      <swiper-container
+        slides-per-view="1.01"
+        space-between="8"
+        centered-slides="true"
+        loop="true"
+        looped-slides="4"
+      >
+        <swiper-slide *ngFor="let h of highlights">
+          <img [src]="h.img" alt="" />
+        </swiper-slide>
+      </swiper-container>
+
+      <ion-item button lines="none" detail="false" routerLink="offers">
+        <ion-text color="dark">up to 50% </ion-text>
+        <ion-button slot="end" fill="clear" color="primary">
+          <ion-icon size="large" name="arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <swiper-container
+        slides-per-view="1.2"
+        space-between="8"
+        free-mode="true"
+      >
+        <swiper-slide *ngFor="let f of featured">
+          <div class="featured-slide" routerLink="details">
+            <img [src]="f.img" alt="" />
+            <div class="info">
+              <ion-text color="dark"><b>{{f.name}}</b> </ion-text>
+              <div>
+                <span *ngFor="let tag of f.tags; let isLast = last;">
+                  {{tag}} {{!isLast? ' · ': ''}}
+                </span>
+              </div>
+              <span>
+                <ion-icon name="star" color="secondary"></ion-icon>
+                <ion-text color="secondary"> {{f.rating}} </ion-text>
+                {{f.ratings}}
+              </span>
+              <span>
+                <ion-icon name="location-outline"></ion-icon> {{f.distance}}
+              </span>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+  </div>
 </ion-content>

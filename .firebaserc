@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tavfb-d3f8a": {
+      "hosting": {
+        "app": [
+          "tavfb-d3f8a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tavfb-d3f8a"
+  }
+}

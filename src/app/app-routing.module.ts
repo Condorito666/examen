@@ -30,7 +30,13 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   //hacer page 404
-  { path: '**', redirectTo: '/login', pathMatch: 'full' },
+
+  //{ path: '**', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: 'modal',
+    loadChildren: () =>
+      import('./modal/modal.module').then((m) => m.ModalPageModule),
+  },
 ];
 @NgModule({
   imports: [

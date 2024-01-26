@@ -1,0 +1,61 @@
+ion-header {
+  box-shadow: 0px 7px 13px -9px rgb(0 0 0 / 10%);
+}
+
+ion-toolbar {
+  --background: #fff;
+}
+::-webkit-scrollbar {
+  display:none ;
+}
+ion-segment {
+  --background: #fff;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+ion-segment-button {
+    min-width: auto;
+    --background-checked: var(--ion-color-primary);
+    --color-checked: #fff;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --indicator-box-shadow: none;
+    --indicator-color: var(--ion-color-primary);
+    --border-width: 0px;
+    --border-radius: 0px;
+    &::part(indicator) {
+        padding-inline: 0px;
+        }
+        &:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        }
+        &:last-child {
+        border-right: 1px solid #00000017;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        }
+        border-bottom: 1px solid #00000017;
+        border-top: 1px solid #00000017;
+        border-left: 1px solid #00000017;
+        &.segment-button-checked {
+        border: none;
+        }
+        }
+
+        .featured-slide{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            img{border-radius: 4px;}
+
+        }
+
+        .info{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
